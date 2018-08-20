@@ -8,6 +8,7 @@
 
 // Apply the java-library plugin to add support for Java Library
 apply plugin: 'java-library'
+project.description= 'Hai Param'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -27,8 +28,62 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-task helloworld << {
+task helloworld {
 
   println 'helloword'
 }
 
+task simple  {
+
+   println 'Running simple  '+project.description
+}
+
+project.setDescription('Bye Param')
+
+project.getTasks().create('smple2'){
+
+  println 'Running porject '+project.description
+}
+
+task second {
+
+  doFirst {
+  
+  
+     println 'doFirst'
+  }
+    
+
+}
+
+task third {
+
+  doFirst { 
+    println "doFirst from ffff ${it.name}"
+  }
+  
+  doLast {  Task taskObject ->   
+     println 'doLast from third ' + taskObject.name
+  }
+} 
+
+task numbers {
+
+   (1..4).each{ number -> 
+   
+     def squre = number * number
+     println "square valued of ${number} is ${squre}"
+   
+   }
+}
+
+
+task list2 {
+
+  doFirst{
+	  def list = ['a', 'b']
+	  println list.collect {it.toLowerCase()}.join('&')
+  }
+}
+
+list2.dependsOn 'numbers'
