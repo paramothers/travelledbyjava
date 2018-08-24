@@ -3,6 +3,11 @@ server:
 spring:
  application:
    name: first
+ devtools: 
+   restart: 
+      exclude: static/**
+ autoconfigure:
+   exclude: org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration
 logging:
  pattern: 
    console: "%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n"
@@ -18,5 +23,15 @@ my:
     - foo.bar.com
 management:
   scurity:
-     enabled:false
-    
+     enabled: false
+     roles: ADMIN
+  basic:
+     enabled: true
+  user:
+     name: admin
+     password: admin
+  endpoints:
+     web: 
+       exposure:
+          include:*
+             

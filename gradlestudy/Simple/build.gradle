@@ -87,3 +87,34 @@ task list2 {
 }
 
 list2.dependsOn 'numbers'
+
+
+def printTaskName = {
+   task -> println "Run .... ${task.name}"
+}
+
+task parent  {
+         
+         println "Run .... ${it.name}"
+     }
+
+
+parent.dependsOn {
+
+  project.tasks.findAll {
+    tasks -> tasks.name.contains 'y'
+  }
+}
+
+task you2 {
+
+  printTaskName
+         
+  }
+
+
+task you1 {
+
+  printTaskName
+}
+
