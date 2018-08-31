@@ -1,4 +1,6 @@
 spring:
- application:
-   name: param-print-uservice
-   
+  application:
+    name: param-print-uservice
+  cloud:
+    config:
+      uri: 
