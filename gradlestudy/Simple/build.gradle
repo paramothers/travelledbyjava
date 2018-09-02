@@ -93,28 +93,53 @@ def printTaskName = {
    task -> println "Run .... ${task.name}"
 }
 
+def taskGroup = 'base'
+
+def simpleTask = "parithi"
+
 task parent  {
          
          println "Run .... ${it.name}"
      }
 
 
-parent.dependsOn {
+task "${simpleTask}" (group: taskGroup)  { 
+  println 'Running '
 
-  project.tasks.findAll {
-    tasks -> tasks.name.contains 'y'
-  }
+
 }
 
-task you2 {
+// parent.dependsOn {
+
+//   project.tasks.findAll {
+//     tasks -> tasks.name.contains 'y'
+//   }
+// }
+
+task you1(description:'this going to be defaul tasks', group: taskGroup) {
+
+  printTaskName
+}
+
+
+// ['Pavalan','Parithi'].each {
+//    env -> task "deploy${each}" (group: taskGroup) {
+//      println 'Deploying '
+//    }
+// }
+
+task you2(dependsOn : you1, description: ' this second task', group: taskGroup ) {
 
   printTaskName
          
   }
 
+task 'pavaln' (group: taskGroup, description: 'He is my first son, from anjeneyar'){
 
-task you1 {
-
-  printTaskName
+ println 'Hai pavalan'
 }
+
+
+
+defaultTasks 'you1'
 

@@ -1,0 +1,6 @@
+spring:
+  appliction:
+      name: param-euraka-server
+cloud: 
+   config: 
+     uri: http://localhost:8888
