@@ -6,3 +6,5 @@ spring:
             uri: https://github.com/paramothers/cloudconfig
     application:
       name: param-config-server
+server:
+   port: 8888
