@@ -15,7 +15,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'param.others'
+group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -29,13 +29,8 @@ ext {
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-
-	compile('org.springframework.cloud:spring-cloud-starter-zuul')
-	compile('org.springframework.cloud:spring-cloud-starter-ribbon')
-	compile('org.springframework.cloud:spring-cloud-config-starter')
-	
+	compile('org.springframework.cloud:spring-cloud-starter-netflix-zuul')
+	compile('org.springframework.cloud:spring-cloud-config-client')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
